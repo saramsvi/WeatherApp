@@ -1,21 +1,22 @@
-//
-//  ContentView.swift
-//  WeatherApp
-//
-//  Created by MSVI on 25.01.23.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel  = WeatherViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            VStack{
+                Text(viewModel.title)
+                    .font(.system(size: 44))
+                Text(viewModel.timezone)
+                    .font(.system(size: 32))
+                Text(viewModel.temp)
+                    .font(.system(size: 24))
+                Text(viewModel.description)
+                    .font(.system(size: 24))
+            }
+            .navigationTitle("Current Weather")
         }
-        .padding()
+        
     }
 }
 
